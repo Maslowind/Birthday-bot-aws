@@ -25,12 +25,12 @@ function checkAddBDMessage(message) {
         if (i != message_data.length - 3)
             username += " ";
     }
-    let dateParams = message_data[message_data.length - 1].split(".");
-    if (dateParams.length !== 2) return null;
-    if (!(dateParams[0] >= 1 && dateParams[0] <= 31 && dateParams[1] >= 1 && dateParams[1] <= 12)) return null;
-    let date = dateParams[0] + "." + dateParams[1];
-    createNewData(message.chat.id, username, date);
-    return date;
+    let bd_dateParams = message_data[message_data.length - 1].split(".");
+    if (bd_dateParams.length !== 2) return null;
+    if (!(bd_dateParams[0] >= 1 && bd_dateParams[0] <= 31 && bd_dateParams[1] >= 1 && bd_dateParams[1] <= 12)) return null;
+    let bd_date = bd_dateParams[0] + "." + bd_dateParams[1];
+    createNewData(message.chat.id, username, bd_date);
+    return bd_date;
 }
 
 async function checkDelBDMessage(message) {
@@ -46,14 +46,14 @@ async function checkDelBDMessage(message) {
     return true;
 }
 
-function createNewData(user_id, username, date) {
+function createNewData(user_id, username, bd_date) {
 
     let params = {
         TableName: TABLE_NAME,
         Item: {
             'id': { N: `${ID()}` },
             'user_id': { N: `${user_id}` },
-            'date': { S: `${date}` },
+            'bd_date': { S: `${bd_date}` },
             'username': { S: `${username}` }
         }
     };
@@ -125,7 +125,7 @@ async function getUserList(message) {
     let user_bd_list = await getUserData(message.chat.id);
     let message_bd_list = "Ваш список друзей:\n"
     for (let i = 0; i < user_bd_list.Items.length; i++) {
-        message_bd_list += `${user_bd_list.Items[i].username.S}: ${user_bd_list.Items[i].date.S} \n`
+        message_bd_list += `${user_bd_list.Items[i].username.S}: ${user_bd_list.Items[i].bd_date.S} \n`
     }
     if (user_bd_list.Items.length === 0) message_bd_list = "У Вас нет друзей в списке. Добавьте их!"
     return message_bd_list;
