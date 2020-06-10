@@ -26,11 +26,11 @@ function checkAddBDdateMessage(user_id, username, date) {
     let bd_dateParams = date.split(".");
     if (bd_dateParams.length !== 2) return null;
     if (!(bd_dateParams[0] >= 1 && bd_dateParams[0] <= 31 && bd_dateParams[1] >= 1 && bd_dateParams[1] <= 12)) return null;
-    /*if (!(bd_dateParams[0] >= 1 && bd_dateParams[0] <= 29 && bd_dateParams[1] == 2)) return null;
-    if (!(bd_dateParams[0] >= 1 && bd_dateParams[0] <= 30 && bd_dateParams[1] == 4)) return null;
-    if (!(bd_dateParams[0] >= 1 && bd_dateParams[0] <= 30 && bd_dateParams[1] == 6)) return null;
-    if (!(bd_dateParams[0] >= 1 && bd_dateParams[0] <= 30 && bd_dateParams[1] == 9)) return null;
-    if (!(bd_dateParams[0] >= 1 && bd_dateParams[0] <= 30 && bd_dateParams[1] == 11)) return null;*/
+    if (!(bd_dateParams[0] >= 1 && bd_dateParams[0] <= 29) && bd_dateParams[1] == 2) return null;
+    if (!(bd_dateParams[0] >= 1 && bd_dateParams[0] <= 30) && bd_dateParams[1] == 4) return null;
+    if (!(bd_dateParams[0] >= 1 && bd_dateParams[0] <= 30) && bd_dateParams[1] == 6) return null;
+    if (!(bd_dateParams[0] >= 1 && bd_dateParams[0] <= 30) && bd_dateParams[1] == 9) return null;
+    if (!(bd_dateParams[0] >= 1 && bd_dateParams[0] <= 30) && bd_dateParams[1] == 11) return null;
     let bd_date = bd_dateParams[0] + "." + bd_dateParams[1];
     createNewData(user_id, username, bd_date);
     return bd_date;

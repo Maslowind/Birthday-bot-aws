@@ -68,7 +68,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-awstelegrambot-master-112941-deployment",
-					"S3Key": "amplify-builds/BotFunction-5a344172443671747764-build.zip"
+					"S3Key": "amplify-builds/BotFunction-436e696d455379565777-build.zip"
 				}
 			}
 		},
